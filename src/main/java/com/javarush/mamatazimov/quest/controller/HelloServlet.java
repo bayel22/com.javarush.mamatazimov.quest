@@ -1,6 +1,8 @@
-package com.javarush.mamatazimov.quest;
+package com.javarush.mamatazimov.quest.controller;
 
 import java.io.*;
+
+import com.javarush.mamatazimov.quest.entity.User;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -13,6 +15,7 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         response.setContentType("text/html");
 
         // Hello
@@ -20,8 +23,28 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+
     }
 
     public void destroy() {
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+
+        String sessionId = session.getId();
+
+        request.setAttribute("sessionID", sessionId);
+
+
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+
+        User user = (User) session.getAttribute("user");
+        response.getWriter().println("Добро пожаловать в квест, " + user.getName() + "!");
+
     }
 }
