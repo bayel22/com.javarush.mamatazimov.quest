@@ -2,22 +2,22 @@ package com.javarush.mamatazimov.quest.entity;
 
 public class Question {
     private String question;
-    private long questionId;
+    private long questionID;
 
-    public Question(String question, long questionId) {
+    public Question(String question, long questionID) {
         this.question = question;
-        this.questionId = questionId;
+        this.questionID = questionID;
     }
-    public String getQuestion() {
+    public String getText() {
         return question;
     }
     public void setQuestion(String question) {
         this.question = question;
     }
-    public long getQuestionId() {
-        return questionId;
+    public long getID() {
+        return questionID;
     }
-    public void setQuestionId(long questionId) {
-        this.questionId = questionId;
+    public void setQuestionId(long questionID) {
+        this.questionID = questionID;
     }
 }
