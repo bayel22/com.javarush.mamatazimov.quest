@@ -21,7 +21,6 @@ public class Answer {
         this.lastAnswer = lastAnswer;
     }
 
-    //Создает новый объект Answer с указанием, является ли ответ проигрышным(параметр: loss).
     public Answer(String answer,boolean lastAnswer, long answerID, boolean loss) {
         this.answer = answer;
         this.answerID = answerID;

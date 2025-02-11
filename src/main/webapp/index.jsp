@@ -3,45 +3,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSP - Hello World</title>
+  <title>Космический квест</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-  <h1><%= "КВЕСТ" %></h1>
-  <br/>
-
-  <h2>Пролог</h2>
-
-  <div>
-    <p class="prologue"> Ты стоишь в космическом порту и готов подняться на борт
-      своего корабля. Разве ты не об этом мечтал?
-      Стать капитаном галактического судна с экипажем,
-      который будет совершать подвиги под твоим командованием.
-      Так что вперед!
-    </p>
+<div class="main-container">
+  <c:if test="${not empty sessionScope.user}">
+    <div class="statistics-box">
+      <h3 class="mb-4">Ваша статистика</h3>
+      <div class="mb-4">
+        <p class="fs-5"><strong>Имя:</strong> ${sessionScope.user}</p>
+        <p class="fs-5"><strong>Побед:</strong> ${sessionScope.countWin}</p>
+        <p class="fs-5"><strong>Проигрышей:</strong> ${sessionScope.countLoss}</p>
+      </div>
+      <form action="hello-servlet" method="post">
+        <button name="restartButton" class="restart-button">
+          Заново
+        </button>
+      </form>
+    </div>
+  </c:if>
+  <div class="content-box">
+    <div class="text-center">
+      <h1 class="display-4 mb-5">🚀 Космический квест</h1>
+      <div class="prologue-text">
+        <p>Ты стоишь в космическом порту и готов подняться на борт своего корабля.</p>
+        <p>Разве ты не об этом мечтал? Стать капитаном галактического судна с экипажем,
+          который будет совершать подвиги под твоим командованием.</p>
+        <p class="fw-bold">Так что вперед!</p>
+      </div>
+      <form action="hello-servlet" method="post">
+        <button type="submit" class="btn btn-primary quest-button">
+          Начать квест
+        </button>
+      </form>
+    </div>
   </div>
-  <br>
-
-  <div class="start-page" id="startPage">
-    <c:choose>
-      <c:when test="${sessionScope.user == null}">
-        <h1>Добро пожаловать!</h1>
-      </c:when>
-      <c:otherwise>
-        <h1>Добро пожаловать ${sessionScope.user}!</h1>
-        <br>
-        <div>
-          <h3>Статистика</h3>
-          <p>Имя: ${sessionScope.user}</p>
-          <p>Побед: ${sessionScope.countWin}</p>
-          <p>Проигрышей: ${sessionScope.countLoss}</p>
-        </div>
-        <br>
-      </c:otherwise>
-    </c:choose>
-  </div>
-
-  <form action="hello-servlet" method="post">
-    <button type="submit">Начать квест</button>
-  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+.main-container {
+    min-height: 100vh;
+}
+.statistics-box {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-right: 1px solid #dee2e6;
+    height: 100vh;
+    position: fixed;
+    width: 18%;
+}
+.content-box {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.prologue-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+.quest-button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    transition: transform 0.3s ease;
+}
+.quest-button:hover {
+    transform: scale(1.05);
+}
+.restart-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.restart-button:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+}
