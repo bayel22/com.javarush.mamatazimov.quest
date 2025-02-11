@@ -12,12 +12,11 @@ public class Logic {
     private static final Repository repository = new Repository();
     private static final List<Question> questionsList = repository.getQuestionsList();
     private static final List<Answer> answersList = repository.getAnswersList();
-    private static int countWinners = 0;
-    private static int countLosses = 0;
 
     public static void checkNullUser(HttpServletRequest req, HttpSession session) {
         if (session.getAttribute("user") == null) {
             User user = new User(req.getParameter("username"));
+            session.setAttribute("userObject", user);
             session.setAttribute("user", user.getName());
         }
     }
@@ -58,17 +57,25 @@ public class Logic {
         if (session.getAttribute("countWin") == null) {
             session.setAttribute("countWin", 0);
         }
+
+        User user = (User) session.getAttribute("userObject");
+
+        long countLoss =  user.getCountLoss();
+        long countWin = user.getCountWin();
+
         if (checkLossValue == null || checkWinValue == null) {
             return false;
         }
         if (Boolean.parseBoolean(checkLossValue)) {
-            countLosses++;
-            session.setAttribute("countLoss", countLosses);
+            countLoss++;
+            user.setCountLoss(countLoss);
+            session.setAttribute("countLoss", user.getCountLoss());
             return true;
         }
         if (Boolean.parseBoolean(checkWinValue)) {
-            countWinners++;
-            session.setAttribute("countWin", countWinners);
+            countWin++;
+            user.setCountWin(countWin);
+            session.setAttribute("countWin", user.getCountWin());
             return true;
         }
         return false;

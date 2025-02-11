@@ -18,10 +18,6 @@ public class HelloServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Logic.checkNullUser(request, session);
 
-        String sessionId = session.getId();
-
-        request.setAttribute("sessionID", sessionId);
-
         if (session.getAttribute("user") == null) {
             response.sendRedirect("login.jsp");
             return;

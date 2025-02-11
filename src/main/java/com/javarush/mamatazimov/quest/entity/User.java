@@ -1,10 +1,9 @@
 package com.javarush.mamatazimov.quest.entity;
 
 public class User {
-    private String name;
-    private int playCount;
-    private long countLoss;
-    private long countWin;
+    private final String name;
+    private long countLoss = 0;
+    private long countWin = 0;
 
     public User(String name) {
         this.name = name;
@@ -13,8 +12,16 @@ public class User {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public long getCountLoss() {
+        return countLoss;
+    }
+    public long getCountWin() {
+        return countWin;
+    }
+    public void setCountLoss(long countLoss) {
+        this.countLoss = countLoss;
+    }
+    public void setCountWin(long countWin) {
+        this.countWin = countWin;
     }
 }

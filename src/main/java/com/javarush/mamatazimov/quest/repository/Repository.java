@@ -31,20 +31,4 @@ public class Repository {
     public List<Answer> getAnswersList() {
         return answers;
     }
-
-    public static int questionsCount() {
-        return questions.size();
-    }
-
-    public Question getQuestion(int questionId) {
-        return questions.get(questionId);
-    }
-
-    public static int answersCount() {
-        return answers.size();
-    }
-
-    public Answer getAnswer(int answerId) {
-        return answers.get(answerId);
-    }
 }

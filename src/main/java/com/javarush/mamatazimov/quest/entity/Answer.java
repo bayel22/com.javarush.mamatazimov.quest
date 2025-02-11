@@ -1,11 +1,19 @@
 package com.javarush.mamatazimov.quest.entity;
 
 public class Answer {
-    private String answer;
-    private long answerID;
+    private final String answer;
+    private final long answerID;
     private boolean loss = false;
     private boolean win = false;
     private boolean lastAnswer = false;
+
+    public String getText() {
+        return answer;
+    }
+    public long getID() {
+        return answerID;
+    }
+    public boolean isLoss() {return loss;}
 
     public Answer(String answer, boolean lastAnswer, long answerID) {
         this.answer = answer;
@@ -27,22 +35,6 @@ public class Answer {
         this.loss = loss;
         this.win = win;
         this.lastAnswer = lastAnswer;
-    }
-
-    public String getText() {
-        return answer;
-    }
-    public void setText(String answer) {
-        this.answer = answer;
-    }
-    public long getID() {
-        return answerID;
-    }
-    public void setID(long answerID) {
-        this.answerID = answerID;
-    }
-    public boolean isLoss() {
-        return loss;
     }
 
     public boolean isWin() {
